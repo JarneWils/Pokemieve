@@ -18,11 +18,11 @@ document.addEventListener('click', e =>{
                 opacity: 1,
             },
         ],  {
-            duration: 1000,
+            duration: 1800,
             fill: "forwards",
             iterations: Infinity
         });
-    }, 1000);
+    }, 2000);
     }
 });
 
@@ -42,7 +42,7 @@ document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') {
         const newBullet = document.createElement("div"); // Creëer nieuwe bullet
         newBullet.className = "bullet1"; // Geef de bullet een class
-        newBullet.style.marginTop = '20vh';
+        newBullet.style.marginTop = '25vh';
 
         // Bullet IMAGE
         const bulletImage = document.createElement("img");
@@ -85,3 +85,49 @@ document.addEventListener('keydown', e => {
         }, 1000);
     }
 });
+
+
+
+// Player
+
+const player = document.getElementById("player-container");
+const jumpSound = document.getElementById('jump-sound');
+
+document.addEventListener('keydown', e => {
+    if (e.code === 'ArrowUp') {
+        jumpSound.play();
+        let playerAnimation = player.animate([
+            {
+                transform: "translateY(0px)", // Startpositie
+                offset: 0
+            },
+            {
+                transform: "translateY(-180px)", // Hoogste punt van de sprong
+                offset: 0.2
+            },
+            {
+                transform: "translateY(-225px)", // Hoogste punt van de sprong
+                offset: 0.4
+            },
+            {
+                transform: "translateY(-225px)", // Kleinere vertraging bij de top
+                offset: 0.5
+            },
+            {
+                transform: "translateY(-220px)", // Kleinere vertraging bij de top
+                offset: 0.6
+            },
+            {
+                transform: "translateY(0px)", // Terug naar de grond
+                offset: 1
+            }
+        ],  {
+            duration: 800,
+            fill: "forwards"
+        });
+    }
+});
+
+
+//collision
+

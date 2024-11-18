@@ -40,6 +40,19 @@ body {
     transition: 0.1s;
 }
 
+.uitleg{
+    margin-top: 42vh;
+    margin-left: 0.5vw;
+    line-height: 3.5vh;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    font-size: large;cursor: pointer;
+}
+
+
+
+
 .container {
     width: 1024px;
     height: 576px;
@@ -96,6 +109,17 @@ body {
     height: 50px;
     margin-top: 20vh;
     opacity: 0;
+}
+
+
+#player-container{
+    width: 5vw;
+    height: 15vh;
+    margin-top: -13.5vh;
+    margin-left: 2vw;
+}
+.fighter{
+    width: 5vw;
 }
 
 /*

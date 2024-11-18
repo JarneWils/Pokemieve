@@ -15,11 +15,18 @@
     <audio id="gun">
         <source src="../data/Gunshot.mp3" type="audio/ogg">
     </audio>
+    <audio id="jump-sound">
+        <source src="../data/Jump.mp3" type="audio/ogg">
+    </audio>
 
     
 <div class="container">
 
-    <div class="press-start"><button class="start">START BATTLE</button></div>
+    <div class="press-start">
+        <button class="start">START BATTLE</button>
+        <p class="uitleg">↑ jump<br>→ shoot <br>
+        </p>
+    </div>
 
         <!-- DAMAGE -->
         <div class="damage-container">
@@ -33,8 +40,8 @@
             </div>
         </div>
 
-        <!-- Bullets -->
 
+        <!-- Bullets -->
         <div id="bullet-container">
             <div id="bullet1">
             </div>
@@ -43,6 +50,12 @@
                 <img class="water" src="../img/bullet-orrange.png">
             </div>  
         </div>
+
+
+        <!-- player -->
+         <div id="player-container">
+            <img class="fighter" src="../img/Fighter.png">
+         </div>
 
 
 </div>

@@ -5,11 +5,25 @@ const c = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 
+
+
+
+// AUDIO
+
 const themeSong = document.getElementById("theme-song");
 document.addEventListener('keydown', e =>{
     if('keydown') {
         themeSong.play();
     }
+})
+
+const walking = document.getElementById("walking");
+walking.loop = true;
+document.addEventListener('keydown', e => {
+        walking.play();
+})
+document.addEventListener('keyup', e => {
+    walking.pause();
 })
 
 
@@ -208,6 +222,7 @@ function animate() {
 };
 
 animate();
+
 
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
