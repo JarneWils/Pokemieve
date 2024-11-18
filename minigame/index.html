@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- audio -->
+    <audio id="song">
+        <source src="../data/Song1.mp3" loop">
+    </audio>
+    <audio id="gun">
+        <source src="../data/Gunshot.mp3" type="audio/ogg">
+    </audio>
+
+    
+<div class="container">
+
+    <div class="press-start"><button class="start">START BATTLE</button></div>
+
+        <!-- DAMAGE -->
+        <div class="damage-container">
+            <div class="damage-player">
+                <p class="username">Dit zijt gij</p>
+                <div class="damage-line"></div>
+            </div>
+            <div class="damage-player">
+                <p class="username">Boze monsterke Clas</p>
+                <div class="damage-line"></div>
+            </div>
+        </div>
+
+        <!-- Bullets -->
+
+        <div id="bullet-container">
+            <div id="bullet1">
+            </div>
+
+            <div id="bullet2">
+                <img class="water" src="../img/bullet-orrange.png">
+            </div>  
+        </div>
+
+
+</div>
+    
+
+<script src="script.js"></script>
+
+</body>
+</html>

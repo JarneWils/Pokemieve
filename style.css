@@ -1,0 +1,28 @@
+body {
+    background-color: black;
+    margin: 0; /* Verwijder standaard marges van de browser */
+    display: flex;
+    justify-content: center; /* Centreer horizontaal */
+    align-items: flex-start; /* Plaats het element bovenaan */
+    height: 100vh; /* Zorg dat de body de volledige schermhoogte bedekt */
+}
+
+.container {
+    position: relative; /* Geen specifieke breedte of hoogte instellen */
+    top: 0; /* Zorg dat het element bovenaan blijft */
+}
+.button{
+    display: none;
+}
+
+@media screen and (max-aspect-ratio: 1/1) and (max-width: 768px) {
+    /* CSS voor kleine, verticale schermen */
+    .container{
+    position: absolute;
+    left: 0vw;
+}    
+    .button{
+    display: block;
+    position: relative;
+}
+}
