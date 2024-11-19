@@ -5,9 +5,10 @@ body {
     justify-content: center;
     align-items: flex-start;
     height: 100vh;
+    overflow: hidden;
 }
 
-.press-start{
+.press-start {
     width: 1024px;
     height: 576px;
     background-color: rgba(0, 0, 0, 0.60);
@@ -16,60 +17,49 @@ body {
     align-items: center;
     justify-content: center;
 }
-.start{
-    width: 10.2vw;
-    height: 8.5vh;
+
+.start {
+    width: 160px;
+    height: 60px;
     position: absolute;
-    margin-top: 25.25vh;
-    margin-left: -4.6vw;
+    margin-top: 220px;
+    margin-left: -80px;
     background-color: rgb(59, 208, 46);
     border: 2px solid black;
     border-radius: 12px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 600;
-    font-size: large;cursor: pointer;
+    font-size: large;
+    cursor: pointer;
 }
 
-.start:hover{
-    width: 10vw;
-    height: 8vh;
-    margin-top: 25.5vh;
-    margin-left: -4.5vw;
+.start:hover {
+    width: 155px;
+    height: 55px;
+    margin-top: 222px;
+    margin-left: -77px;
     background-color: rgb(137, 224, 75);
     font-weight: 600;
     transition: 0.1s;
 }
 
-.game-over{
-    width: 1024px;
-    height: 576px;
-    background-color: rgba(0, 0, 0, 0.60);
-    position: fixed;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.uitleg{
-    margin-top: 38vh;
-    margin-left: 0.5vw;
-    line-height: 3.5vh;
+.uitleg {
+    margin-top: 340px;
+    line-height: 28px;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 600;
-    font-size: large;cursor: pointer;
+    font-size: large;
+    cursor: pointer;
 }
-
-
-
 
 .container {
     width: 1024px;
     height: 576px;
     background-image: url('../img/pxArt.png');
-    background-size: 102%;
+    background-size: 100%;
     background-repeat: no-repeat;
-    position: relative; /* Zorg dat de container een referentiepunt is voor de absolute positionering van de bullet */
+    position: relative;
 }
 
 .damage-container {
@@ -77,95 +67,88 @@ body {
     width: 100%;
     height: 30%;
     display: flex;
-    gap: 4vw;
-    margin-top: 4vh;
+    gap: 180px;
+    margin-top: 40px;
+    margin-left: 30px;
 }
 
-.damage-player {
-    width: 40%;
+.damage-player1 {
+    width: 380px;
     height: 50%;
     background-color: rgb(255, 255, 255);
     border: 5px solid black;
     border-radius: 15px;
-    margin-left: 2vw;
+}
+.damage-player2 {
+    width: 380px;
+    height: 50%;
+    background-color: rgb(255, 255, 255);
+    border: 5px solid black;
+    border-radius: 15px;
 }
 
 .username {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 600;
     font-size: large;
-    margin-top: 2vh;
-    margin-left: 1vw;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
 #damage-line-player {
-    width: 18vw;
+    width: 300px;
     height: 10%;
     background-color: red;
-    margin-left: 1vw;
+    margin-left: 10px;
     border-radius: 50vw;
 }
 #damage-line-bot {
-    width: 18vw;
+    width: 300px;
     height: 10%;
     background-color: red;
-    margin-left: 1vw;
+    margin-left: 10px;
     border-radius: 50vw;
 }
 
-#bullet-container{
+#bullet-container {
     display: flex;
 }
 #bullet1 {
     width: 50px;
     height: 50px;
-    margin-top: 25vh;
+    margin-top: 180px;
 }
 #bullet2 {
     width: 50px;
     height: 50px;
-    margin-top: 20vh;
-    margin-left: 30vh;
+    margin-top: 160px;
+    margin-left: 300px;
     opacity: 0;
 }
 
-
-
-.character-container{
+.character-container {
     display: flex;
 }
 
-
-#player-container{
-    width: 5vw;
-    height: 15vh;
-    margin-top: -12.8vh;
-    margin-left: 4vw;
+#player-container {
+    width: 100px;
+    height: 120px;
+    margin-top: -90px;
+    margin-left: 40px;
 }
 .fighter{
-    width: 5vw;
+    width: auto;
+    height: 138px;
 }
 
-#bot-container{
-    width: 8vw;
-    height: 26vh;
-    margin-top: -24.5vh;
-    margin-left: 35vw;
+#bot-container {
+    width: 80px;
+    height: 208px;
+    margin-top: -202px;
+    margin-left: 735px;
 }
-.bot{
-    width: 8vw;
-    height: 26vh;
-}
-/*
-@keyframes waterBullet {
-    0% {
-        left: 80px; 
-    }
-    75% {
-        left: 1000px; 
-    }
-    100% {
-        left: 1010px;
-        opacity: 0;
-    }
+
+.bot {
+    width: auto;
+    height: 250px;
 }

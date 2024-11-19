@@ -42,7 +42,7 @@ document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') {
         const newBullet = document.createElement("div"); // Creëer nieuwe bullet
         newBullet.className = "bullet1"; // Geef de bullet een class
-        newBullet.style.marginTop = '25vh';
+        newBullet.style.marginTop = '200px';
 
         // Bullet IMAGE
         const bulletImage = document.createElement("img");
@@ -173,6 +173,8 @@ setInterval(() => {
         remainingWidth -= 2;
 
         if (remainingWidth <= 0) {
+            const playerRaster = document.getElementsByClassName("damage-player1")[0];
+            playerRaster.style.backgroundColor = "red";
             auwSound.pause(); // Stop the sound
             auwSound.currentTime = 0;
             stopGame();
@@ -194,7 +196,7 @@ setInterval(() => {
     const bot = document.getElementById("bot-container");
     const bullet1 = document.getElementById("bullet2");
     const hitSound = document.getElementById("hit");
-
+    const victorySound = document.getElementById("victory");
     if (detectCollision(bot, bullet1)) {
         const damageBot = document.getElementById("damage-line-bot");
         hitSound.play();
@@ -203,13 +205,15 @@ setInterval(() => {
         remainingWidthBot -= 0.5;
 
         if (remainingWidthBot <= 0) {
-            auwSound.pause(); // Stop the sound
-            auwSound.currentTime = 0;
+            const botRaster = document.getElementsByClassName("damage-player2")[0];
+            botRaster.style.backgroundColor = "red";
+            hitSound.pause(); // Stop the sound
+            hitSound.currentTime = 0;
             stopGame();
-            gamOverSound.play();
+            victorySound.play();
             setTimeout(() => {
-                location.reload();
-            }, 4000);
+                window.location.href = "../index.html";
+            }, 7000);
         }
 
         // Update the width of the damage line
