@@ -10,15 +10,15 @@ document.addEventListener('click', e =>{
         setTimeout(() => {
         let bullet2Animation = bullet2.animate([
             {
-              transform: "translateX(850px)",
+              transform: "translateX(550px)",
                opacity: 1,
             },
             {
-                transform: "translateX(-55px)",
+                transform: "translateX(-340px)",
                 opacity: 1,
             },
         ],  {
-            duration: 1800,
+            duration: 1500,
             fill: "forwards",
             iterations: Infinity
         });
@@ -62,15 +62,15 @@ document.addEventListener('keydown', e => {
         // Bullet1 Animation
         let bullet1Animation = newBullet.animate([
             {
-              transform: "translateX(-20px)",
+              transform: "translateX(-200px)",
                opacity: 1,
             },
             {
-                transform: "translateX(920px)",
+                transform: "translateX(550px)",
                 opacity: 1,
             },
             {
-                transform: "translateX(920px)",
+                transform: "translateX(560px)",
                 opacity: 0,
             },
         ],  {
@@ -129,5 +129,90 @@ document.addEventListener('keydown', e => {
 });
 
 
-//collision
+//GAMEOVER
 
+function detectCollision(player, bullet) {
+    const playerRect = player.getBoundingClientRect();
+    const bulletRect = bullet.getBoundingClientRect();
+
+    // Controleer of de rechthoeken overlappen
+    return (
+        playerRect.x < bulletRect.x + bulletRect.width &&
+        playerRect.x + playerRect.width > bulletRect.x &&
+        playerRect.y < bulletRect.y + bulletRect.height &&
+        playerRect.y + playerRect.height > bulletRect.y
+    );
+}
+
+function stopGame() {
+    // Stop alle animaties
+    document.getAnimations().forEach(animation => animation.pause());
+
+    // Pauzeer alle geluiden
+    song.pause();
+    gunshot.pause();
+
+    // Geef een alert
+}
+
+// Controleer op botsing in een interval
+let remainingWidth = 16; // Declare this outside the setInterval so it persists
+
+
+setInterval(() => {
+    const player = document.getElementById("player-container");
+    const bullet2 = document.getElementById("bullet2");
+    const auwSound = document.getElementById("auw");
+    const gamOverSound = document.getElementById("game-over-sound");
+
+    if (detectCollision(player, bullet2)) {
+        const damagePlayer = document.getElementById("damage-line-player");
+        auwSound.play();
+
+        // Subtract 4 from the remaining width
+        remainingWidth -= 2;
+
+        if (remainingWidth <= 0) {
+            auwSound.pause(); // Stop the sound
+            auwSound.currentTime = 0;
+            stopGame();
+            gamOverSound.play();
+            setTimeout(() => {
+                location.reload();
+            }, 4000);
+        }
+
+        // Update the width of the damage line
+        damagePlayer.style.width = remainingWidth + "vw"; // Set the width in vw
+    }
+}, 100);
+
+
+let remainingWidthBot = 16;
+
+setInterval(() => {
+    const bot = document.getElementById("bot-container");
+    const bullet1 = document.getElementById("bullet2");
+    const hitSound = document.getElementById("hit");
+
+    if (detectCollision(bot, bullet1)) {
+        const damageBot = document.getElementById("damage-line-bot");
+        hitSound.play();
+
+        // Subtract 4 from the remaining width
+        remainingWidthBot -= 0.5;
+
+        if (remainingWidthBot <= 0) {
+            auwSound.pause(); // Stop the sound
+            auwSound.currentTime = 0;
+            stopGame();
+            gamOverSound.play();
+            setTimeout(() => {
+                location.reload();
+            }, 4000);
+        }
+
+        // Update the width of the damage line
+        damageBot.style.width = remainingWidthBot + "vw"; // Set the width in vw
+    }
+}, 100);

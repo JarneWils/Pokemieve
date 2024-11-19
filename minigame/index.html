@@ -18,13 +18,22 @@
     <audio id="jump-sound">
         <source src="../data/Jump.mp3" type="audio/ogg">
     </audio>
+    <audio id="auw">
+        <source src="../data/Auw.mp3" type="audio/ogg">
+    </audio>
+    <audio id="game-over-sound">
+        <source src="../data/game-over.mp3" type="audio/ogg">
+    </audio>
+    <audio id="hit">
+        <source src="../data/Hit.mp3" type="audio/ogg">
+    </audio>
 
     
 <div class="container">
 
     <div class="press-start">
         <button class="start">START BATTLE</button>
-        <p class="uitleg">↑ jump<br>→ shoot <br>
+        <p class="uitleg">↑ jump<br>→ shoot <br>(schiet in zijn lul)
         </p>
     </div>
 
@@ -32,11 +41,11 @@
         <div class="damage-container">
             <div class="damage-player">
                 <p class="username">Dit zijt gij</p>
-                <div class="damage-line"></div>
+                <div id="damage-line-player"></div>
             </div>
             <div class="damage-player">
                 <p class="username">Boze monsterke Clas</p>
-                <div class="damage-line"></div>
+                <div id="damage-line-bot"></div>
             </div>
         </div>
 
@@ -51,11 +60,21 @@
             </div>  
         </div>
 
+        <div class="character-container">
 
-        <!-- player -->
-         <div id="player-container">
-            <img class="fighter" src="../img/Fighter.png">
-         </div>
+            <!-- player -->
+            <div id="player-container">
+                <img class="fighter" src="../img/Fighter.png">
+            </div>
+
+            <!-- bot -->
+            <div id="bot-container">
+                <img class="bot" src="../img/Bot.png">
+            </div>
+
+        </div>
+
+        
 
 
 </div>

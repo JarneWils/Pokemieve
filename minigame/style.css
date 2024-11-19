@@ -20,7 +20,7 @@ body {
     width: 10.2vw;
     height: 8.5vh;
     position: absolute;
-    margin-top: 30.25vh;
+    margin-top: 25.25vh;
     margin-left: -4.6vw;
     background-color: rgb(59, 208, 46);
     border: 2px solid black;
@@ -33,15 +33,25 @@ body {
 .start:hover{
     width: 10vw;
     height: 8vh;
-    margin-top: 30.5vh;
+    margin-top: 25.5vh;
     margin-left: -4.5vw;
     background-color: rgb(137, 224, 75);
     font-weight: 600;
     transition: 0.1s;
 }
 
+.game-over{
+    width: 1024px;
+    height: 576px;
+    background-color: rgba(0, 0, 0, 0.60);
+    position: fixed;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
 .uitleg{
-    margin-top: 42vh;
+    margin-top: 38vh;
     margin-left: 0.5vw;
     line-height: 3.5vh;
     color: white;
@@ -88,8 +98,15 @@ body {
     margin-left: 1vw;
 }
 
-.damage-line {
-    width: 80%;
+#damage-line-player {
+    width: 18vw;
+    height: 10%;
+    background-color: red;
+    margin-left: 1vw;
+    border-radius: 50vw;
+}
+#damage-line-bot {
+    width: 18vw;
     height: 10%;
     background-color: red;
     margin-left: 1vw;
@@ -108,20 +125,37 @@ body {
     width: 50px;
     height: 50px;
     margin-top: 20vh;
+    margin-left: 30vh;
     opacity: 0;
+}
+
+
+
+.character-container{
+    display: flex;
 }
 
 
 #player-container{
     width: 5vw;
     height: 15vh;
-    margin-top: -13.5vh;
-    margin-left: 2vw;
+    margin-top: -12.8vh;
+    margin-left: 4vw;
 }
 .fighter{
     width: 5vw;
 }
 
+#bot-container{
+    width: 8vw;
+    height: 26vh;
+    margin-top: -24.5vh;
+    margin-left: 35vw;
+}
+.bot{
+    width: 8vw;
+    height: 26vh;
+}
 /*
 @keyframes waterBullet {
     0% {
