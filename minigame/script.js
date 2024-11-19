@@ -1,12 +1,18 @@
 // PRESS START
-const startButton = document.getElementsByClassName("press-start")[0]; // de nul selecteert het eerste element met die class... anders kan je niet removen
+const startButton = document.getElementsByClassName("start")[0]; // de nul selecteert het eerste element met die class... anders kan je niet removen
+const startButtonBackground = document.getElementsByClassName("press-start")[0];
 const song = document.getElementById("song");
 song.loop = true;
 
-document.addEventListener('click', e =>{
-    if (startButton) {
+//bullets
+const bullet1 = document.getElementById("bullet1");
+const bullet2 = document.getElementById("bullet2");
+const gunshot = document.getElementById("gun");
+
+if (startButton) {
+startButton.addEventListener('click', e =>{
+        startButtonBackground.remove();
         song.play();
-        startButton.remove();
         setTimeout(() => {
         let bullet2Animation = bullet2.animate([
             {
@@ -22,15 +28,10 @@ document.addEventListener('click', e =>{
             fill: "forwards",
             iterations: Infinity
         });
-    }, 2000);
-    }
-});
+        // Zorgt dat het geluid opnieuw speelt bij elke iteration
+    }, 3000);
+})};
 
-
-//bullets
-const bullet1 = document.getElementById("bullet1");
-const bullet2 = document.getElementById("bullet2");
-const gunshot = document.getElementById("gun");
 
 document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') {
@@ -62,7 +63,7 @@ document.addEventListener('keydown', e => {
         // Bullet1 Animation
         let bullet1Animation = newBullet.animate([
             {
-              transform: "translateX(-260px)",
+              transform: "translateX(-280px)",
                opacity: 1,
             },
             {

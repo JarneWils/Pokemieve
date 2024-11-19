@@ -141,7 +141,7 @@ function animate() {
                     rectangle1: player,
                     rectangle2: {...boundary, position: {
                         x: boundary.position.x,
-                        y: boundary.position.y + 4
+                        y: boundary.position.y + 3 // speed
                     }}
                 })
             ) {
@@ -163,7 +163,7 @@ function animate() {
                     rectangle1: player,
                     rectangle2: {...boundary, position: {
                         x: boundary.position.x,
-                        y: boundary.position.y - 4
+                        y: boundary.position.y - 3 // speed
                     }}
                 })
             ) {
@@ -184,7 +184,7 @@ function animate() {
                 rectangularCollision({
                     rectangle1: player,
                     rectangle2: {...boundary, position: {
-                        x: boundary.position.x +4,
+                        x: boundary.position.x +3, // speed
                         y: boundary.position.y
                     }}
                 })
@@ -195,7 +195,7 @@ function animate() {
         }
         if (moving)
         movables.forEach((movable) => {
-            movable.position.x +=4
+            movable.position.x +=3 // speed
         })}
   
     //right
@@ -206,7 +206,7 @@ function animate() {
                 rectangularCollision({
                     rectangle1: player,
                     rectangle2: {...boundary, position: {
-                        x: boundary.position.x -4,
+                        x: boundary.position.x -3, // speed
                         y: boundary.position.y
                     }}
                 })
@@ -269,9 +269,12 @@ window.addEventListener('keyup', (e) => {
 });
 
 
-const battleButton = document.getElementsByClassName("battle")[0];
-document.addEventListener('click', e => {
-    if(battleButton){
+//Battle
+
+const battleButton = document.getElementById("battle");
+console.log(battleButton);
+if(battleButton){
+battleButton.addEventListener('click', e => {
         window.location.href = "../minigame/index.html";
     }
-}); 
+)};

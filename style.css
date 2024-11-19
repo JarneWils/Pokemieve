@@ -9,7 +9,7 @@ body {
     position: relative; /* Geen specifieke breedte of hoogte instellen */
     top: 0; /* Zorg dat het element bovenaan blijft */
 }
-.battle{
+#battle{
     width: 160px;
     height: 60px;
     position: absolute;
@@ -22,7 +22,7 @@ body {
     font-size: large;
     cursor: pointer;
 }
-.battle:hover {
+#battle:hover {
     width: 158px;
     height: 58px;
     position: absolute;
