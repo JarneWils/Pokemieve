@@ -3,16 +3,33 @@ body {
     margin: 0; /* Verwijder standaard marges van de browser */
     display: flex;
     justify-content: center; /* Centreer horizontaal */
-    align-items: flex-start; /* Plaats het element bovenaan */
-    height: 100vh; /* Zorg dat de body de volledige schermhoogte bedekt */
 }
 
 .container {
     position: relative; /* Geen specifieke breedte of hoogte instellen */
     top: 0; /* Zorg dat het element bovenaan blijft */
 }
-.button{
-    display: none;
+.battle{
+    width: 160px;
+    height: 60px;
+    position: absolute;
+    margin-top: 500px;
+    background-color: rgb(103, 209, 76);
+    border: 2px solid black;
+    border-radius: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    font-size: large;
+    cursor: pointer;
+}
+.battle:hover {
+    width: 158px;
+    height: 58px;
+    position: absolute;
+    margin-top: 501px;
+    background-color: rgb(153, 238, 92);
+    font-weight: 600;
+    transition: 0.1s;
 }
 
 @media screen and (max-aspect-ratio: 1/1) and (max-width: 768px) {

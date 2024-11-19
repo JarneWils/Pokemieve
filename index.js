@@ -267,3 +267,11 @@ window.addEventListener('keyup', (e) => {
             break;
     }
 });
+
+
+const battleButton = document.getElementsByClassName("battle")[0];
+document.addEventListener('click', e => {
+    if(battleButton){
+        window.location.href = "../minigame/index.html";
+    }
+}); 

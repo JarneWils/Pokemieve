@@ -62,20 +62,19 @@ document.addEventListener('keydown', e => {
         // Bullet1 Animation
         let bullet1Animation = newBullet.animate([
             {
-              transform: "translateX(-200px)",
+              transform: "translateX(-260px)",
                opacity: 1,
             },
             {
-                transform: "translateX(550px)",
+                transform: "translateX(560px)",
                 opacity: 1,
             },
             {
-                transform: "translateX(560px)",
+                transform: "translateX(580px)",
                 opacity: 0,
             },
         ],  {
             duration: 2000,
-            fill: "forwards",
             playState: 'paused',
         });
         // Bullet moet na 1 seconde niet meer bestaan
@@ -190,33 +189,43 @@ setInterval(() => {
 }, 100);
 
 
+
+
+
 let remainingWidthBot = 16;
 
 setInterval(() => {
     const bot = document.getElementById("bot-container");
-    const bullet1 = document.getElementById("bullet2");
+    const bullets = document.querySelectorAll(".bullet1"); // Selecteer alle dynamische bullets
     const hitSound = document.getElementById("hit");
     const victorySound = document.getElementById("victory");
-    if (detectCollision(bot, bullet1)) {
-        const damageBot = document.getElementById("damage-line-bot");
-        hitSound.play();
 
-        // Subtract 4 from the remaining width
-        remainingWidthBot -= 0.5;
+    bullets.forEach(bullet => { // Controleer elke bullet afzonderlijk
+        if (detectCollision(bot, bullet)) {
+            const damageBot = document.getElementById("damage-line-bot");
+            hitSound.play();
 
-        if (remainingWidthBot <= 0) {
-            const botRaster = document.getElementsByClassName("damage-player2")[0];
-            botRaster.style.backgroundColor = "red";
-            hitSound.pause(); // Stop the sound
-            hitSound.currentTime = 0;
-            stopGame();
-            victorySound.play();
-            setTimeout(() => {
-                window.location.href = "../index.html";
-            }, 7000);
+            // Verminder de resterende breedte
+            remainingWidthBot -= 0.5;
+
+            if (remainingWidthBot <= 0) {
+                const botRaster = document.getElementsByClassName("damage-player2")[0];
+                botRaster.style.backgroundColor = "red";
+                hitSound.pause(); // Stop het geluid
+                hitSound.currentTime = 0;
+                stopGame();
+                victorySound.play();
+                setTimeout(() => {
+                    window.location.href = "../index.html";
+                }, 7000);
+            }
+
+            // Update de breedte van de damage-lijn
+            damageBot.style.width = remainingWidthBot + "vw";
+
+            // Verwijder de bullet na een botsing
+            bullet.remove();
         }
-
-        // Update the width of the damage line
-        damageBot.style.width = remainingWidthBot + "vw"; // Set the width in vw
-    }
+    });
 }, 100);
+
