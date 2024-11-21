@@ -2,17 +2,22 @@
 const startButton = document.getElementsByClassName("start")[0]; // de nul selecteert het eerste element met die class... anders kan je niet removen
 const startButtonBackground = document.getElementsByClassName("press-start")[0];
 const song = document.getElementById("song");
+song.play();
 song.loop = true;
+
+
+
 
 //bullets
 const bullet1 = document.getElementById("bullet1");
 const bullet2 = document.getElementById("bullet2");
 const gunshot = document.getElementById("gun");
 
+//start
 if (startButton) {
 startButton.addEventListener('click', e =>{
-        startButtonBackground.remove();
         song.play();
+        startButtonBackground.remove();
         setTimeout(() => {
         let bullet2Animation = bullet2.animate([
             {
@@ -38,7 +43,12 @@ document.addEventListener('keydown', e => {
         gunshot.play();
     }});
 
+
+
+
+
 // SHOOT
+
 document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') {
         const newBullet = document.createElement("div"); // Creëer nieuwe bullet
@@ -88,7 +98,8 @@ document.addEventListener('keydown', e => {
 
 
 
-// Player
+
+// JUMP
 
 const player = document.getElementById("player-container");
 const jumpSound = document.getElementById('jump-sound');
@@ -129,6 +140,8 @@ document.addEventListener('keydown', e => {
 });
 
 
+
+
 //GAMEOVER
 
 function detectCollision(player, bullet) {
@@ -144,10 +157,14 @@ function detectCollision(player, bullet) {
     );
 }
 
+let dieAnimation;
+
 function stopGame() {
     // Stop alle animaties
-    document.getAnimations().forEach(animation => animation.pause());
-
+    const animations = document.getAnimations();
+    animations.forEach(animation => {
+            animation.pause();
+    });
     // Pauzeer alle geluiden
     song.pause();
     gunshot.pause();
@@ -157,7 +174,6 @@ function stopGame() {
 
 // Controleer op botsing in een interval
 let remainingWidth = 16; // Declare this outside the setInterval so it persists
-
 
 setInterval(() => {
     const player = document.getElementById("player-container");
@@ -177,10 +193,11 @@ setInterval(() => {
             playerRaster.style.backgroundColor = "red";
             auwSound.pause(); // Stop the sound
             auwSound.currentTime = 0;
+
             stopGame();
             gamOverSound.play();
             setTimeout(() => {
-                location.reload();
+                window.location.href = "../index.html";
             }, 4000);
         }
 
@@ -192,6 +209,7 @@ setInterval(() => {
 
 
 
+// GEWONNE
 
 let remainingWidthBot = 16;
 

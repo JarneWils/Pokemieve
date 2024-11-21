@@ -1,0 +1,16 @@
+body {
+    background-color: black;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    width: 1024px;
+    height: 576px;
+    background-color: white;
+    position: relative;
+}

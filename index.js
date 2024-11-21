@@ -11,6 +11,7 @@ canvas.height = 576;
 // AUDIO
 
 const themeSong = document.getElementById("theme-song");
+themeSong.play();
 document.addEventListener('keydown', e =>{
     if('keydown') {
         themeSong.play();
@@ -67,8 +68,14 @@ image.src = './img/Map-Final.png';
 const forgroundImage = new Image();
 forgroundImage.src = './img/Map-Forground.png';
 
-const playerImage = new Image();
-playerImage.src = './img/playerDown.png';
+const playerDownImage = new Image();
+playerDownImage.src = './img/playerDown.png';
+const playerUpImage = new Image();
+playerUpImage.src = './img/playerUp.png';
+const playerLeftImage = new Image();
+playerLeftImage.src = './img/playerLeft.png';
+const playerRightImage = new Image();
+playerRightImage.src = './img/playerRight.png';
 
 
 const player =  new Sprite ({
@@ -76,9 +83,15 @@ const player =  new Sprite ({
         x: canvas.width / 2 - 192 / 4 / 2,  // 192 is de officiele pixel-breedte van de player image
         y: canvas.height / 2 - 68 / 2   // 68 is de officiele pixel-hoogte van de player image
     },
-    image: playerImage,
+    image: playerDownImage,
     frames: {
         max: 4
+    },
+    sprites: {
+        up: playerUpImage,
+        down: playerDownImage,
+        left: playerLeftImage,
+        right: playerRightImage
     }
 });
 
@@ -130,10 +143,14 @@ function animate() {
     forground.draw();
 
     // Movement values
-    let moving = true
-
+    let moving = true;
+    player.moving = false;
     //up
     if (keys.ArrowUp.pressed && lastKey === 'ArrowUp') {
+        player.moving = true;
+
+        player.image = player.sprites.up
+        
         for (let i = 0; i < boundaries.length; i++ ){
             const boundary = boundaries[i];
             if (
@@ -141,7 +158,7 @@ function animate() {
                     rectangle1: player,
                     rectangle2: {...boundary, position: {
                         x: boundary.position.x,
-                        y: boundary.position.y + 3 // speed
+                        y: boundary.position.y + 4 // speed
                     }}
                 })
             ) {
@@ -151,11 +168,13 @@ function animate() {
         }
         if (moving)
             movables.forEach((movable) => {
-            movable.position.y +=4
+            movable.position.y += 4 // speed
         })}
 
     //down
     else if (keys.ArrowDown.pressed && lastKey === 'ArrowDown') {
+        player.moving = true;
+        player.image = player.sprites.down
         for (let i = 0; i < boundaries.length; i++ ){
             const boundary = boundaries[i];
             if (
@@ -163,7 +182,7 @@ function animate() {
                     rectangle1: player,
                     rectangle2: {...boundary, position: {
                         x: boundary.position.x,
-                        y: boundary.position.y - 3 // speed
+                        y: boundary.position.y - 4 // speed
                     }}
                 })
             ) {
@@ -173,18 +192,20 @@ function animate() {
         }
         if (moving)
         movables.forEach((movable) => {
-            movable.position.y -=4
+            movable.position.y -= 4
         })}
             
     //left
     else if (keys.ArrowLeft.pressed && lastKey === 'ArrowLeft') {
+        player.moving = true;
+        player.image = player.sprites.left
         for (let i = 0; i < boundaries.length; i++ ){
             const boundary = boundaries[i];
             if (
                 rectangularCollision({
                     rectangle1: player,
                     rectangle2: {...boundary, position: {
-                        x: boundary.position.x +3, // speed
+                        x: boundary.position.x + 4, // speed
                         y: boundary.position.y
                     }}
                 })
@@ -195,18 +216,20 @@ function animate() {
         }
         if (moving)
         movables.forEach((movable) => {
-            movable.position.x +=3 // speed
+            movable.position.x += 4 // speed
         })}
   
     //right
     else if (keys.ArrowRight.pressed && lastKey === 'ArrowRight') {
+        player.moving = true;
+        player.image = player.sprites.right
         for (let i = 0; i < boundaries.length; i++ ){
             const boundary = boundaries[i];
             if (
                 rectangularCollision({
                     rectangle1: player,
                     rectangle2: {...boundary, position: {
-                        x: boundary.position.x -3, // speed
+                        x: boundary.position.x - 4, // speed
                         y: boundary.position.y
                     }}
                 })
@@ -217,7 +240,7 @@ function animate() {
         }
         if (moving)
         movables.forEach((movable) => {
-            movable.position.x -=4
+            movable.position.x -= 4
         })} 
 };
 
@@ -252,18 +275,22 @@ window.addEventListener('keyup', (e) => {
     switch (e.key) {
         case 'ArrowUp':
             keys.ArrowUp.pressed = false;
+            player.moving = false
             break;
 
         case 'ArrowDown':
             keys.ArrowDown.pressed = false;
+            player.moving = false
             break;
 
         case 'ArrowLeft':
             keys.ArrowLeft.pressed = false;
+            player.moving = false
             break;
 
         case 'ArrowRight':
             keys.ArrowRight.pressed = false;
+            player.moving = false
             break;
     }
 });
@@ -275,6 +302,6 @@ const battleButton = document.getElementById("battle");
 console.log(battleButton);
 if(battleButton){
 battleButton.addEventListener('click', e => {
-        window.location.href = "../minigame/index.html";
+        window.location.href = "../Bossfight01/index.html";
     }
 )};
